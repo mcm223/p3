@@ -11,6 +11,15 @@
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+
+*/
+
+// New index route
+Route::get('/', 'BookController@index');
+
+// New placeholder action route
+Route::get('/fetch-book', 'BookController@fetchBook');
