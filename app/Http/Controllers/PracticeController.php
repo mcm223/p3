@@ -3,9 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Config;
+use App;
+use Debugbar;
 
 class PracticeController extends Controller
 {
+
+    public function practice3()
+    {
+        $data = ['foo' => 'bar'];
+        Debugbar::info($data);
+        Debugbar::info('Current environment: ' . App::environment());
+        Debugbar::error('Error!');
+        Debugbar::warning('Watch out…');
+        Debugbar::addMessage('Another message', 'mylabel');
+
+        return 'Demoing some of the features of Debugbar';
+    }
+
     public function practice2()
     {
         dump(['a' => '123', 'b' => '456']);
