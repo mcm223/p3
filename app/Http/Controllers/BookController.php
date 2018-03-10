@@ -15,4 +15,9 @@ class BookController extends Controller
     {
         return 'This will trigger an action to return a book';
     }
+
+    public function show($title)
+    {
+        return view('books.show')->with(['title' => $title]);
+    }
 }
