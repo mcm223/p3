@@ -23,3 +23,6 @@ Route::get('/', 'BookController@index');
 
 // New placeholder action route
 Route::get('/fetch-book', 'BookController@fetchBook');
+
+// Practice route
+Route::any('/practice/{n?}', 'PracticeController@index');
