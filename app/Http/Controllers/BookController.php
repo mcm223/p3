@@ -8,7 +8,10 @@ class BookController extends Controller
 {
     public function index()
     {
-        return 'This will show the index page of my site.';
+        $url = 'http://p3.mcm223.me';
+        $githubUrl = 'https://github.com/mcm223/p3';
+        $title = 'Blind Date with a Book';
+        return view('books.show')->with(['url' => $url, 'githubUrl' => $githubUrl, 'title' => $title]);
     }
 
     public function fetchBook()

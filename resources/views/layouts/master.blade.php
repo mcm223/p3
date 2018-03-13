@@ -1,20 +1,43 @@
 <!doctype html>
 <html>
 <head>
-    <title>@yield('title', 'Foobooks')</title>
+    <title>{{ $title }}</title>
     <meta charset='utf-8'>
-    <link href='/css/p3.css' type='text/css' rel='stylesheet'>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Custom CSS -->
+    <link href='/css/p3_style.css' type='text/css' rel='stylesheet'>
+    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Favicon -->
+    <link rel="icon" href="/images/books-icon.png">
     @stack('head')
 </head>
 <body>
 
 <header>
-    <a href='/'><img src='/images/foobooks-logo@2x.png' id='logo' alt='Foobooks Logo'></a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{{ $url }}">@yield('title','Blind Date with a Book')</a>
+        <div id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ $url }}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ $url }}" target='_blank'>GitHub</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </header>
 
 <section>
     @yield('content')
+</section>
+
+<section>
+    @yield('form')
 </section>
 
 <footer>
