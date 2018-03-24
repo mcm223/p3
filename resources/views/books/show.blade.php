@@ -31,7 +31,7 @@
         <!-- Start user input section -->
         <h4>Book Preferences:</h4>
 
-        <form method='GET' action='/'>
+        <form method='GET' action='/fetch-book'>
             <div class='form-group'>
 
                 <label for='genre'>Select your preferred genre:</label>
@@ -47,7 +47,7 @@
                 <label>Specify your maximum length in pages (enter 0 for no limit):
                     <input type='text' name='pageLimit' class='form-control' id='pageLimitInput'
                            oninput='validateInput(this.value)'
-                           value={{($pageLimit) ? $pageLimit : '0'}}>
+                           value={{ ($request) ? $request->session()->get('pageLimit') : '0' }}>
                 </label>
                 <!-- Errors -->
                 @if(count($errors) > 0)

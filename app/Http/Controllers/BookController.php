@@ -3,29 +3,55 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\CustomClasses\Book;
 
 class BookController extends Controller
 {
-    public function index(Request $request)
+    /* Return the index on first page land */
+    public function index()
     {
         // Page variables
-        $url = 'http://p3.mcm223.me';
-        $githubUrl = 'https://github.com/mcm223/p3';
-        $title = 'Blind Date with a Book';
+        $url = config('app.url');
+        $githubUrl = config('app.githubUrl');
+        $title = config('app.name');
+
+        return view('books.show')->with([
+            'url' => $url,
+            'githubUrl' => $githubUrl,
+            'title' => $title,
+            'genre' => 'all',
+            'pageLimit' => '0',
+            'ebook' => false,
+            'request' => false
+        ]);
+    }
+
+    /* Process form request */
+    public function fetchBook(Request $request)
+    {
+        // Page variables
+        $url = config('app.url');
+        $githubUrl = config('app.githubUrl');
+        $title = config('app.name');
 
         // Extract form inputs
         $genre = $request->input('genre');
         $ebooks = $request->has('ebook');
         $pageLimit = $request->input('pageLimit');
 
+        // JSON file path
+        $datafile = database_path('/books.json');
+
+        // Create new Book object and call method to process user input
+        $book = new Book($datafile);
+        $bookResults = $book->getByTitle($genre, $pageLimit, $ebooks);
 
         // Validate text input
         if ($pageLimit) {
             $this->validate($request, [
-                'pageLimit' => 'required|alpha_num'
+                'pageLimit' => 'required|numeric'
             ]);
         }
-
 
         return view('books.show')->with([
             'url' => $url,
@@ -34,12 +60,9 @@ class BookController extends Controller
             'request' => $request,
             'genre' => $genre,
             'ebook' => $ebooks,
-            'pageLimit' => $pageLimit]);
-    }
-
-    public function fetchBook()
-    {
-        return 'This will trigger an action to return a book';
+            'pageLimit' => $pageLimit,
+            'bookResults' => $bookResults
+        ]);
     }
 
     public function show($title)
