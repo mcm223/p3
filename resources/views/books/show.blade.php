@@ -31,29 +31,37 @@
         <!-- Start user input section -->
         <h4>Book Preferences:</h4>
 
-        <form method='GET' action='index.php'>
+        <form method='GET' action='/'>
             <div class='form-group'>
 
                 <label for='genre'>Select your preferred genre:</label>
                 <select name='genre' id='genre' class='form-control'>
-                    <option value='all'>Surprise Me!</option>
-                    <option value='scifi'>Fiction</option>
-                    <option value='history'>History</option>
-                    <option value='fiction'>General Fiction</option>
-                    <option value='fantasy'>Fantasy</option>
+                    <option value='all' {{ ($genre == 'all') ? 'selected' : '' }}>Surprise Me!</option>
+                    <option value='scifi' {{ ($genre == 'scifi') ? 'selected' : '' }}>Fiction</option>
+                    <option value='history' {{ ($genre == 'history') ? 'selected' : '' }}>History</option>
+                    <option value='fiction' {{ ($genre == 'fiction') ? 'selected' : '' }}>General Fiction</option>
+                    <option value='fantasy' {{ ($genre == 'fantasy') ? 'selected' : '' }}>Fantasy</option>
                 </select>
             </div>
             <div class='form-group'>
                 <label>Specify your maximum length in pages (enter 0 for no limit):
                     <input type='text' name='pageLimit' class='form-control' id='pageLimitInput'
                            oninput='validateInput(this.value)'
-                           value='0'>
+                           value={{($pageLimit) ? $pageLimit : '0'}}>
                 </label>
+                <!-- Errors -->
+                @if(count($errors) > 0)
+                    <ul class='alert alert-danger'>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
             </div>
             <div class='form-group'>
                 <div id='checkbox'>
                     <label><input type='checkbox' class='form-check-input' name='ebook'
-                                  value='true'> Exclude
+                                  value='true' {{ ($ebook) ? 'checked' : '' }}> Exclude
                         books without ebook version?</label>
                 </div>
                 <div id='submit'>

@@ -1,0 +1,74 @@
+{
+  "The Lord of the Rings": {
+    "id": 0,
+    "author": "J.R.R. Tolkein",
+    "genre": "fantasy",
+    "length": 1178,
+    "hasEbook": true,
+    "cover_url": "https://images-na.ssl-images-amazon.com/images/I/51eq24cRtRL.jpg",
+    "purchase_url": "http://www.amazon.com/dp/0618640150"
+  },
+  "The Hitchhiker's Guide to the Galaxy": {
+    "id": 1,
+    "author": "Douglas Adams",
+    "genre": "scifi",
+    "length": 224,
+    "hasEbook": true,
+    "cover_url": "https://images-na.ssl-images-amazon.com/images/I/51KIDgdSDfL.jpg",
+    "purchase_url": "https://www.amazon.com/dp/0345391802"
+  },
+  "A Struggle for Power: The American Revolution": {
+    "id": 2,
+    "author": "Theodore Draper",
+    "genre": "history",
+    "length": 560,
+    "hasEbook": false,
+    "cover_url": "https://images-na.ssl-images-amazon.com/images/I/51T5nXmWYgL.jpg",
+    "purchase_url": "https://www.amazon.com/dp/0679776427"
+  },
+  "The Long Dark Tea-Time of the Soul": {
+    "id": 3,
+    "author": "Douglas Adams",
+    "genre": "fiction",
+    "length": 320,
+    "hasEbook": true,
+    "cover_url": "https://images-na.ssl-images-amazon.com/images/I/51B5ocuBH8L.jpg",
+    "purchase_url": "https://www.amazon.com/dp/0671742515"
+  },
+  "The Expanding Blaze: How the American Revolution Ignited the World": {
+    "id": 4,
+    "author": "Jonathan Israel",
+    "genre": "history",
+    "length": 768,
+    "hasEbook": true,
+    "cover_url": "https://images-na.ssl-images-amazon.com/images/I/91GQC6SeqCL.jpg",
+    "purchase_url": "https://www.amazon.com/dp/0691176604"
+  },
+  "Altered Carbon": {
+    "id": 5,
+    "author": "Richard K. Morgan",
+    "genre": "scifi",
+    "length": 375,
+    "hasEbook": true,
+    "cover_url": "https://images-na.ssl-images-amazon.com/images/I/51Pp57ytuhL.jpg",
+    "purchase_url": "https://www.amazon.com/dp/0345457684"
+  },
+  "The Enlightenment: The Rise of Modern Paganism (Vol. 1)": {
+    "id": 6,
+    "author": "Peter Gay",
+    "genre": "history",
+    "length": 592,
+    "hasEbook": false,
+    "cover_url": "https://images-na.ssl-images-amazon.com/images/I/91zSt6QkbmL.jpg",
+    "purchase_url": "https://www.amazon.com/dp/0393313026"
+  },
+  "Dune": {
+    "id": 7,
+    "author": "Frank Herbert",
+    "genre": "fantasy",
+    "length": 896,
+    "hasEbook": true,
+    "cover_url": "https://images-na.ssl-images-amazon.com/images/I/518lXhMAXNL.jpg",
+    "purchase_url": "https://www.amazon.com/dp/0441172717"
+  }
+}
