@@ -22,7 +22,9 @@ class BookController extends Controller
             'genre' => 'all',
             'pageLimit' => '0',
             'ebook' => false,
-            'request' => false
+            'request' => false,
+            'bookResult' => true,
+            'haveResults' => false
         ]);
     }
 
@@ -37,14 +39,11 @@ class BookController extends Controller
         // Extract form inputs
         $genre = $request->input('genre');
         $ebooks = $request->has('ebook');
-        $pageLimit = $request->input('pageLimit');
-
-        // Validate text input
-        if ($pageLimit) {
-            $this->validate($request, [
-                'pageLimit' => 'required|numeric'
-            ]);
-        }
+        
+        // Validate user input and extract the validated value
+        $pageLimit = $request->validate([
+            'pageLimit' => 'required|numeric'
+        ])['pageLimit'];
 
         // JSON file path
         $datafile = database_path('/books.json');
@@ -52,8 +51,7 @@ class BookController extends Controller
         // Create new Book object and call methods to process user input
         $book = new Book($datafile);
         $bookResult = $book->getRandomEntry($book->getByTitle($genre, $pageLimit, $ebooks));
-
-        dump($bookResult);
+        $haveResults = $book->haveResults;
 
         return view('books.show')->with([
             'url' => $url,
@@ -63,7 +61,8 @@ class BookController extends Controller
             'genre' => $genre,
             'ebook' => $ebooks,
             'pageLimit' => $pageLimit,
-            'bookResults' => $bookResult
+            'bookResult' => $bookResult,
+            'haveResults' => $haveResults
         ]);
     }
 

@@ -60,7 +60,9 @@ class Book
         if (count($arr) > 0) {
             $this->haveResults = true;
             $choice = array_rand($arr);
-            $output = $this->books[$choice];
+            $output = [$choice];
+            array_push($output, $this->books[$choice]);
+            //$output = $this->books[$choice];
         } else {
             $output = [];
             $this->haveResults = false;
