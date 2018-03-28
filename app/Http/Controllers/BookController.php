@@ -39,19 +39,21 @@ class BookController extends Controller
         $ebooks = $request->has('ebook');
         $pageLimit = $request->input('pageLimit');
 
-        // JSON file path
-        $datafile = database_path('/books.json');
-
-        // Create new Book object and call method to process user input
-        $book = new Book($datafile);
-        $bookResults = $book->getByTitle($genre, $pageLimit, $ebooks);
-
         // Validate text input
         if ($pageLimit) {
             $this->validate($request, [
                 'pageLimit' => 'required|numeric'
             ]);
         }
+
+        // JSON file path
+        $datafile = database_path('/books.json');
+
+        // Create new Book object and call methods to process user input
+        $book = new Book($datafile);
+        $bookResult = $book->getRandomEntry($book->getByTitle($genre, $pageLimit, $ebooks));
+
+        dump($bookResult);
 
         return view('books.show')->with([
             'url' => $url,
@@ -61,7 +63,7 @@ class BookController extends Controller
             'genre' => $genre,
             'ebook' => $ebooks,
             'pageLimit' => $pageLimit,
-            'bookResults' => $bookResults
+            'bookResults' => $bookResult
         ]);
     }
 

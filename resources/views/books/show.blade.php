@@ -47,7 +47,7 @@
                 <label>Specify your maximum length in pages (enter 0 for no limit):
                     <input type='text' name='pageLimit' class='form-control' id='pageLimitInput'
                            oninput='validateInput(this.value)'
-                           value={{ ($request) ? $request->session()->get('pageLimit') : '0' }}>
+                           value={{ (old('pageLimit')) ? old('pageLimit') : $pageLimit }}>
                 </label>
                 <!-- Errors -->
                 @if(count($errors) > 0)
@@ -71,5 +71,6 @@
         </form>
 
         <!-- Put output section here -->
+
     </div>
 @endsection

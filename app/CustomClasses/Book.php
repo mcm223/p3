@@ -6,7 +6,9 @@ class Book
 {
 
     // Changed this to protected so it's available to ProcessBook extension
-    protected $books;
+    public $books;
+    public $haveResults = false;
+    public $output = [];
 
     // Constructor that takes the JSON file
     public function __construct($dataFile)
@@ -51,5 +53,18 @@ class Book
             }
         }
         return $results;
+    }
+
+    public function getRandomEntry($arr)
+    {
+        if (count($arr) > 0) {
+            $this->haveResults = true;
+            $choice = array_rand($arr);
+            $output = $this->books[$choice];
+        } else {
+            $output = [];
+            $this->haveResults = false;
+        }
+        return $output;
     }
 }
