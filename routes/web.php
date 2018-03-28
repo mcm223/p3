@@ -21,7 +21,7 @@ Route::get('/', function () {
 // New index route
 Route::get('/', 'BookController@index');
 
-// New placeholder action route
+// Process user input to fetch book
 Route::get('/fetch-book', 'BookController@fetchBook');
 
 // Show route

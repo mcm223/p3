@@ -44,7 +44,7 @@
                 </select>
             </div>
             <div class='form-group'>
-                <label>Specify your maximum length in pages (enter 0 for no limit):
+                <label>REQUIRED - Specify your maximum length in pages (enter 0 for no limit):
                     <input type='text' name='pageLimit' class='form-control' id='pageLimitInput'
                            oninput='validateInput(this.value)'
                            value={{ (old('pageLimit')) ? old('pageLimit') : $pageLimit }}>
