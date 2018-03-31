@@ -37,7 +37,7 @@
                 <label for='genre'>Select your preferred genre:</label>
                 <select name='genre' id='genre' class='form-control'>
                     <option value='all' {{ ($genre == 'all') ? 'selected' : '' }}>Surprise Me!</option>
-                    <option value='scifi' {{ ($genre == 'scifi') ? 'selected' : '' }}>Fiction</option>
+                    <option value='scifi' {{ ($genre == 'scifi') ? 'selected' : '' }}>Science Fiction</option>
                     <option value='history' {{ ($genre == 'history') ? 'selected' : '' }}>History</option>
                     <option value='fiction' {{ ($genre == 'fiction') ? 'selected' : '' }}>General Fiction</option>
                     <option value='fantasy' {{ ($genre == 'fantasy') ? 'selected' : '' }}>Fantasy</option>
