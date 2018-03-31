@@ -5,8 +5,8 @@ namespace App\CustomClasses;
 class Book
 {
 
-    // Changed this to protected so it's available to ProcessBook extension
-    public $books;
+    // Variables
+    protected $books;
     public $haveResults = false;
     public $output = [];
 
@@ -62,7 +62,6 @@ class Book
             $choice = array_rand($arr);
             $output = [$choice];
             array_push($output, $this->books[$choice]);
-            //$output = $this->books[$choice];
         } else {
             $output = [];
             $this->haveResults = false;

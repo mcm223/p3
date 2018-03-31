@@ -54,9 +54,4 @@ class BookController extends Controller
             'haveResults' => $book->haveResults
         ]);
     }
-
-    public function show($title)
-    {
-        return view('books.show')->with(['title' => $title]);
-    }
 }
