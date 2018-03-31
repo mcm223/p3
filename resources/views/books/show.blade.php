@@ -5,7 +5,7 @@
 @endsection
 
 @push('head')
-    {{-- Page specific CSS includes should be defined here; this .css file does not exist yet, but we can create it --}}
+    {{-- Custom CSS --}}
     <link href='/css/books/show.css' type='text/css' rel='stylesheet'>
     {{-- Page specific JS to validate the form --}}
     <script src="js/validate.js"></script>
@@ -28,7 +28,7 @@
                     href='http://www.belmontbooks.com/' target='_blank'>Belmont Books</a>.
             </p>
         </div>
-        <!-- Start user input section -->
+        {{-- Start user input section --}}
         <h4>Book Preferences:</h4>
 
         <form method='GET' action='/fetch-book'>
@@ -49,14 +49,8 @@
                            oninput='validateInput(this.value)'
                            value={{ (old('pageLimit')) ? old('pageLimit') : $pageLimit }}>
                 </label>
-                <!-- Errors -->
-                @if(count($errors) > 0)
-                    <ul class='alert alert-danger'>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                @endif
+                {{-- Error Handling --}}
+                @include('modules.errors')
             </div>
             <div class='form-group'>
                 <div id='checkbox'>
@@ -70,22 +64,7 @@
             </div>
         </form>
 
-        <!-- Put output section here -->
-        @if($haveResults && count($errors) == 0)
-            <div class='card'>
-                <div class='card-header'>Your Blind Date Book Is:</div>
-                <img class='card-img-top' src='<?= $bookResult[1]['cover_url'] ?>'
-                     alt='Cover photo for the book <?= $bookResult[0] ?>'>
-                <div class='card-body'>
-                    <h5 class='card-title'><?= $bookResult[0] ?></h5>
-                    <p class='card-text'>by <?= $bookResult[1]['author'] ?></p>
-                    <a href='<?= $bookResult[1]['purchase_url'] ?>' class='card-link' target='_blank'>Buy
-                        me!</a>
-                </div>
-            </div>
-
-        @elseif($request && count($errors) == 0)
-            <div class='alert alert-danger'>Oops, no results! Try again with different criteria.</div>
-        @endif
+        {{-- Form Results Output --}}
+        @include('modules.results')
     </div>
 @endsection
